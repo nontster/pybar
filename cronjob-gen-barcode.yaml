@@ -16,8 +16,15 @@ spec:
             volumeMounts:
             - name: shared
               mountPath: /share
+            resources:
+              requests:
+                memory: "64Mi"
+                cpu: "250m"
+              limits:
+                memory: "128Mi"
+                cpu: "500m"
           restartPolicy: OnFailure
           volumes:
           - name: shared
             persistentVolumeClaim:
-              claimName: local-pv-claim
+              claimName: pybar-claim
