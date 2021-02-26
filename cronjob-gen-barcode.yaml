@@ -1,0 +1,23 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: gen-barcode
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    metadata:
+      name: gen-barcode
+    spec:
+      template:
+        spec:
+          containers:
+          - image: nontster/python-barcode
+            name: gen-barcode
+            volumeMounts:
+            - name: shared
+              mountPath: /share
+          restartPolicy: OnFailure
+          volumes:
+          - name: shared
+            persistentVolumeClaim:
+              claimName: local-pv-claim
