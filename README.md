@@ -1,5 +1,10 @@
 # PYBAR
 
+Install pyStrich
+```
+pip3 install pyStrich
+```
+
 Using Kubernetes CronJob resource to generate random barcode images every minute and store in Persistent Volume
 
 > For minikube mount host directory to VM
